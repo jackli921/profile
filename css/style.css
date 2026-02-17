@@ -186,7 +186,7 @@ body {
   bottom: auto;
   top: calc(100% + var(--space-sm));
   text-align: center;
-  min-width: 280px;
+  width: 340px;
   z-index: 1000;
 }
 
