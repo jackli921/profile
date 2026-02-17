@@ -7,23 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize subTaglineExplanation as hidden
   subTaglineExplanation.classList.remove('show');
 
-  const elementsToClick = [...koans, subTaglineLink];
-
-  const checkAllClicked = () => {
-    const allClicked = elementsToClick.every(el => {
-      console.log(`Element: ${el.id || el.className}, clicked: ${el.dataset.clicked}`);
-      return el.dataset.clicked === 'true';
-    });
-    console.log(`All elements clicked: ${allClicked}`);
-    return allClicked;
+  const checkAllKoansClicked = () => {
+    return [...koans].every(koan => koan.dataset.clicked === 'true');
   };
 
   const revealSocialIcons = () => {
-    if (checkAllClicked()) {
+    if (checkAllKoansClicked()) {
       socialIcons.classList.add('show');
-      console.log('Social icons revealed!');
-    } else {
-      console.log('Not all elements clicked yet.');
     }
   };
 
@@ -52,8 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   subTaglineLink.addEventListener('click', (e) => {
     e.preventDefault();
-    subTaglineLink.dataset.clicked = 'true';
-    revealSocialIcons();
 
     // Close all koan explanations
     koans.forEach(koan => {
