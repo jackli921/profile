@@ -151,6 +151,43 @@ body {
   animation: textReveal 0.8s ease-out 0.5s both;
 }
 
+/* Tagline with triple dot trigger
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.tagline {
+  position: relative;
+}
+
+.sub-tagline {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--accent-vermillion);
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  position: relative;
+  top: -0.1em;
+  transition: letter-spacing 0.3s ease;
+}
+
+.sub-tagline:hover {
+  letter-spacing: 0.25em;
+}
+
+.sub-tagline-modal {
+  position: absolute;
+  top: calc(100% + var(--space-sm));
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: normal;
+  text-align: center;
+  min-width: 280px;
+  z-index: 1000;
+}
+
 /* Content Container
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .content-container {

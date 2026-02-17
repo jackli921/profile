@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const koans = [...document.querySelectorAll('.koan')];
   const socialReveal = document.querySelector('.social-reveal');
+  const subTaglineLink = document.getElementById('open-modal');
+  const subTaglineModal = document.getElementById('sub-tagline-explanation');
 
   // Set hint on first unclicked koan
   const updateHint = () => {
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
       koan.querySelector('.explanation').classList.remove('show');
       koan.classList.remove('open');
     });
+    subTaglineModal.classList.remove('show');
   };
 
   koans.forEach((koan, index) => {
@@ -47,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
           otherKoan.classList.remove('open');
         }
       });
+      subTaglineModal.classList.remove('show');
 
       if (isAlreadyClicked) {
         // If clicking an already-clicked koan
@@ -78,13 +82,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Sub-tagline modal toggle
+  subTaglineLink.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // Close all koan explanations
+    koans.forEach(koan => {
+      koan.querySelector('.explanation').classList.remove('show');
+      koan.classList.remove('open');
+    });
+
+    // Toggle the sub-tagline modal
+    subTaglineModal.classList.toggle('show');
+  });
+
   // Close explanations when clicking outside
   document.addEventListener('click', (e) => {
     const clickedOnKoan = e.target.closest('.koan');
+    const clickedOnSubTagline = e.target.closest('#open-modal');
     const clickedOnExplanation = e.target.closest('.explanation');
 
     // If clicked outside all interactive elements and explanations
-    if (!clickedOnKoan && !clickedOnExplanation) {
+    if (!clickedOnKoan && !clickedOnSubTagline && !clickedOnExplanation) {
       closeAllExplanations();
     }
   });
