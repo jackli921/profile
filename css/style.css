@@ -151,42 +151,6 @@ body {
   animation: textReveal 0.8s ease-out 0.5s both;
 }
 
-/* Tagline with inline "..." trigger
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.tagline-wrapper {
-  position: relative;
-  z-index: 500;
-}
-
-.profile .sub-tagline {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  color: var(--accent-vermillion);
-  text-decoration: none;
-  cursor: pointer;
-  display: inline;
-  padding: 0;
-  margin-left: 0.1em;
-  transition: color 0.4s ease, letter-spacing 0.4s ease;
-}
-
-.profile .sub-tagline:hover {
-  letter-spacing: 0.25em;
-}
-
-#sub-tagline-explanation {
-  top: calc(100% + var(--space-xs));
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: auto;
-  white-space: normal;
-  text-align: center;
-  min-width: 280px;
-  z-index: 1000;
-}
-
 /* Content Container
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .content-container {
@@ -467,6 +431,15 @@ body {
   color: var(--text-secondary);
   text-align: center;
   margin: 0 0 var(--space-md);
+}
+
+.professional-tagline {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: var(--space-md) 0 0;
 }
 
 /* Social Icons

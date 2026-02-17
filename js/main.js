@@ -1,11 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const koans = [...document.querySelectorAll('.koan')];
-  const subTaglineLink = document.getElementById('open-modal');
-  const subTaglineExplanation = document.getElementById('sub-tagline-explanation');
   const socialReveal = document.querySelector('.social-reveal');
-
-  // Initialize subTaglineExplanation as hidden
-  subTaglineExplanation.classList.remove('show');
 
   // Set hint on first unclicked koan
   const updateHint = () => {
@@ -37,8 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
       koan.querySelector('.explanation').classList.remove('show');
       koan.classList.remove('open');
     });
-    subTaglineExplanation.classList.remove('show');
-    subTaglineLink.classList.remove('open');
   };
 
   koans.forEach((koan, index) => {
@@ -54,8 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
           otherKoan.classList.remove('open');
         }
       });
-      subTaglineExplanation.classList.remove('show');
-      subTaglineLink.classList.remove('open');
 
       if (isAlreadyClicked) {
         // If clicking an already-clicked koan
@@ -87,28 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  subTaglineLink.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    // Close all koan explanations
-    koans.forEach(koan => {
-      koan.querySelector('.explanation').classList.remove('show');
-      koan.classList.remove('open');
-    });
-
-    // Toggle the sub-tagline explanation
-    subTaglineExplanation.classList.toggle('show');
-    subTaglineLink.classList.toggle('open');
-  });
-
   // Close explanations when clicking outside
   document.addEventListener('click', (e) => {
     const clickedOnKoan = e.target.closest('.koan');
-    const clickedOnSubTagline = e.target.closest('#open-modal');
     const clickedOnExplanation = e.target.closest('.explanation');
 
     // If clicked outside all interactive elements and explanations
-    if (!clickedOnKoan && !clickedOnSubTagline && !clickedOnExplanation) {
+    if (!clickedOnKoan && !clickedOnExplanation) {
       closeAllExplanations();
     }
   });
