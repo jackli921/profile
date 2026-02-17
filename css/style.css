@@ -187,10 +187,20 @@ body {
   top: calc(100% + var(--space-sm));
   text-align: center;
   width: 320px;
-  height: auto;
   z-index: 1000;
   border-left: none;
   border-top: 2px solid var(--accent-vermillion);
+
+  /* Ensure background covers all content */
+  display: block;
+  overflow: visible;
+  background-color: var(--bg-elevated);
+  padding: var(--space-md);
+}
+
+.sub-tagline-modal p {
+  margin: 0;
+  padding: 0;
 }
 
 .sub-tagline-modal.show {
