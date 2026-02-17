@@ -186,8 +186,11 @@ body {
   bottom: auto;
   top: calc(100% + var(--space-sm));
   text-align: center;
-  width: 340px;
+  width: 320px;
+  height: auto;
   z-index: 1000;
+  border-left: none;
+  border-top: 2px solid var(--accent-vermillion);
 }
 
 .sub-tagline-modal.show {
