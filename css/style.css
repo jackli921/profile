@@ -185,26 +185,6 @@ body {
 .sub-tagline-modal {
   bottom: auto;
   top: calc(100% + var(--space-sm));
-  text-align: center;
-  width: 320px;
-  z-index: 1000;
-  border-left: none;
-  border-top: 2px solid var(--accent-vermillion);
-
-  /* Ensure background covers all content */
-  display: block;
-  overflow: visible;
-  background-color: var(--bg-elevated);
-  padding: var(--space-md);
-}
-
-.sub-tagline-modal p {
-  margin: 0;
-  padding: 0;
-}
-
-.sub-tagline-modal.show {
-  transform: translateX(-50%) translateY(0);
 }
 
 /* Content Container
@@ -556,11 +536,6 @@ body {
   .explanation {
     width: 260px;
     padding: var(--space-sm);
-  }
-
-  .sub-tagline-modal {
-    width: 300px;
-    padding: var(--space-md);
   }
 }
 
