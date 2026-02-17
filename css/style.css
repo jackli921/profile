@@ -257,18 +257,23 @@ body {
 .koan:not(:last-child) .icon::after {
   content: '';
   position: absolute;
-  top: 100%;
+  top: calc(100% + 4px);
   left: 50%;
   transform: translateX(-50%);
   width: 1px;
   height: 0;
-  background-color: var(--accent-vermillion);
+  background: linear-gradient(
+    to bottom,
+    var(--accent-vermillion) 0%,
+    var(--accent-vermillion) 70%,
+    transparent 100%
+  );
   transition: height 0.5s ease;
 }
 
 /* When koan is clicked, show the connecting line */
 .koan.clicked:not(:last-child) .icon::after {
-  height: calc(var(--space-sm) * 2 + 1.6 * 1.15rem + 10px);
+  height: 3rem;
 }
 
 /* Pulse animation for first unclicked koan */
