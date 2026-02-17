@@ -557,6 +557,11 @@ body {
     width: 260px;
     padding: var(--space-sm);
   }
+
+  .sub-tagline-modal {
+    width: 300px;
+    padding: var(--space-md);
+  }
 }
 
 @media (max-height: 600px) {
