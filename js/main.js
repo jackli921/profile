@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const koans = document.querySelectorAll('.koan');
+  const koans = [...document.querySelectorAll('.koan')];
   const subTaglineLink = document.getElementById('open-modal');
   const subTaglineExplanation = document.getElementById('sub-tagline-explanation');
   const socialIcons = document.querySelector('.social-icons');
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set hint on first unclicked koan
   const updateHint = () => {
     koans.forEach(koan => koan.classList.remove('hint'));
-    const firstUnclicked = [...koans].find(koan => koan.dataset.clicked !== 'true');
+    const firstUnclicked = koans.find(koan => koan.dataset.clicked !== 'true');
     if (firstUnclicked) {
       firstUnclicked.classList.add('hint');
     }
@@ -20,28 +20,34 @@ document.addEventListener('DOMContentLoaded', () => {
   updateHint();
 
   const checkAllKoansClicked = () => {
-    return [...koans].every(koan => koan.dataset.clicked === 'true');
+    return koans.every(koan => koan.dataset.clicked === 'true');
   };
 
-  const revealSocialIcons = () => {
+  const updateSocialIcons = () => {
     if (checkAllKoansClicked()) {
       socialIcons.classList.add('show');
+    } else {
+      socialIcons.classList.remove('show');
     }
   };
 
-  koans.forEach(koan => {
-    koan.addEventListener('click', () => {
-      // Mark as clicked and add clicked class for styling
-      koan.dataset.clicked = 'true';
-      koan.classList.add('clicked');
+  // Close all explanations
+  const closeAllExplanations = () => {
+    koans.forEach(koan => {
+      koan.querySelector('.explanation').classList.remove('show');
+      koan.classList.remove('open');
+    });
+    subTaglineExplanation.classList.remove('show');
+    subTaglineLink.classList.remove('open');
+  };
 
-      // Update hint to next unclicked koan
-      updateHint();
+  koans.forEach((koan, index) => {
+    koan.addEventListener('click', (e) => {
+      const isAlreadyClicked = koan.dataset.clicked === 'true';
+      const explanation = koan.querySelector('.explanation');
+      const isExplanationOpen = explanation.classList.contains('show');
 
-      // Check if all clicked to reveal social icons
-      revealSocialIcons();
-
-      // Close all other explanations (including sub-tagline explanation)
+      // Close all other explanations first
       koans.forEach(otherKoan => {
         if (otherKoan !== koan) {
           otherKoan.querySelector('.explanation').classList.remove('show');
@@ -51,10 +57,33 @@ document.addEventListener('DOMContentLoaded', () => {
       subTaglineExplanation.classList.remove('show');
       subTaglineLink.classList.remove('open');
 
-      // Toggle the current explanation
-      const explanation = koan.querySelector('.explanation');
-      explanation.classList.toggle('show');
-      koan.classList.toggle('open');
+      if (isAlreadyClicked) {
+        // If clicking an already-clicked koan
+        if (isExplanationOpen) {
+          // Just close the explanation
+          explanation.classList.remove('show');
+          koan.classList.remove('open');
+        } else {
+          // Retreat: unclick this and all koans below it
+          for (let i = index; i < koans.length; i++) {
+            koans[i].dataset.clicked = 'false';
+            koans[i].classList.remove('clicked');
+          }
+          updateHint();
+          updateSocialIcons();
+        }
+      } else {
+        // Clicking an unclicked koan - mark as clicked
+        koan.dataset.clicked = 'true';
+        koan.classList.add('clicked');
+
+        // Show explanation
+        explanation.classList.add('show');
+        koan.classList.add('open');
+
+        updateHint();
+        updateSocialIcons();
+      }
     });
   });
 
@@ -73,14 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Close explanations when clicking outside
-  window.addEventListener('click', (e) => {
-    if (!e.target.closest('.koan') && !e.target.closest('#open-modal')) {
-      koans.forEach(koan => {
-        koan.querySelector('.explanation').classList.remove('show');
-        koan.classList.remove('open');
-      });
-      subTaglineExplanation.classList.remove('show');
-      subTaglineLink.classList.remove('open');
+  document.addEventListener('click', (e) => {
+    const clickedOnKoan = e.target.closest('.koan');
+    const clickedOnSubTagline = e.target.closest('#open-modal');
+    const clickedOnExplanation = e.target.closest('.explanation');
+
+    // If clicked outside all interactive elements and explanations
+    if (!clickedOnKoan && !clickedOnSubTagline && !clickedOnExplanation) {
+      closeAllExplanations();
     }
   });
 });
