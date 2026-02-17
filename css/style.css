@@ -182,16 +182,7 @@ body {
   letter-spacing: 0.25em;
 }
 
-.sub-tagline-modal {
-  bottom: auto;
-  top: calc(100% + var(--space-sm));
-  display: block;
-  height: auto;
-}
-
-.sub-tagline-modal p {
-  position: relative;
-}
+/* Sub-tagline modal - positioned above like koan modals */
 
 /* Content Container
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
