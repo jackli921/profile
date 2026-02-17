@@ -153,8 +153,13 @@ body {
 
 /* Tagline with triple dot trigger
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.tagline {
+.tagline-wrapper {
   position: relative;
+  display: inline-block;
+}
+
+.tagline {
+  margin: 0;
 }
 
 .sub-tagline {
