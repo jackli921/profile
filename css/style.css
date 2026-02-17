@@ -448,8 +448,8 @@ body {
 .social-icons {
   margin: var(--space-md) 0 0;
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
-  gap: var(--space-md);
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px);
@@ -457,24 +457,6 @@ body {
     opacity 0.6s ease,
     visibility 0.6s ease,
     transform 0.6s ease;
-
-  /* Horizontal scroll (conveyor belt) */
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
-  padding: var(--space-sm) var(--space-md);
-  margin-left: calc(-1 * var(--space-md));
-  margin-right: calc(-1 * var(--space-md));
-
-  /* Hide scrollbar but keep functionality */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.social-icons::-webkit-scrollbar {
-  display: none;
 }
 
 .social-icons a {
@@ -483,12 +465,10 @@ body {
   justify-content: center;
   width: 44px;
   height: 44px;
-  min-width: 44px;
   border-radius: 50%;
   background: transparent;
   border: 1px solid rgba(154, 149, 139, 0.2);
   transition: all 0.3s ease;
-  scroll-snap-align: center;
 }
 
 .social-icons a:hover {
