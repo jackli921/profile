@@ -185,6 +185,12 @@ body {
 .sub-tagline-modal {
   bottom: auto;
   top: calc(100% + var(--space-sm));
+  display: block;
+  height: auto;
+}
+
+.sub-tagline-modal p {
+  position: relative;
 }
 
 /* Content Container
