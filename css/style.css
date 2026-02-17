@@ -443,13 +443,10 @@ body {
   margin: 0;
 }
 
-/* Social Icons
+/* Social Reveal (message + icons)
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.social-icons {
+.social-reveal {
   margin: var(--space-md) 0 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px);
@@ -457,6 +454,30 @@ body {
     opacity 0.6s ease,
     visibility 0.6s ease,
     transform 0.6s ease;
+}
+
+.social-reveal.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.connect-message {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 0 0 var(--space-md);
+}
+
+/* Social Icons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.social-icons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .social-icons a {
@@ -486,12 +507,6 @@ body {
 
 .social-icons a:hover img {
   filter: grayscale(0%) brightness(1) invert(0);
-}
-
-.social-icons.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
 }
 
 /* Utility Classes

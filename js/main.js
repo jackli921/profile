@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const koans = [...document.querySelectorAll('.koan')];
   const subTaglineLink = document.getElementById('open-modal');
   const subTaglineExplanation = document.getElementById('sub-tagline-explanation');
-  const socialIcons = document.querySelector('.social-icons');
+  const socialReveal = document.querySelector('.social-reveal');
 
   // Initialize subTaglineExplanation as hidden
   subTaglineExplanation.classList.remove('show');
@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
     return koans.every(koan => koan.dataset.clicked === 'true');
   };
 
-  const updateSocialIcons = () => {
+  const updateSocialReveal = () => {
     if (checkAllKoansClicked()) {
-      socialIcons.classList.add('show');
+      socialReveal.classList.add('show');
     } else {
-      socialIcons.classList.remove('show');
+      socialReveal.classList.remove('show');
     }
   };
 
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             koans[i].classList.remove('clicked');
           }
           updateHint();
-          updateSocialIcons();
+          updateSocialReveal();
         }
       } else {
         // Clicking an unclicked koan - mark as clicked
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         koan.classList.add('open');
 
         updateHint();
-        updateSocialIcons();
+        updateSocialReveal();
       }
     });
   });
