@@ -7,6 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize subTaglineExplanation as hidden
   subTaglineExplanation.classList.remove('show');
 
+  // Set hint on first unclicked koan
+  const updateHint = () => {
+    koans.forEach(koan => koan.classList.remove('hint'));
+    const firstUnclicked = [...koans].find(koan => koan.dataset.clicked !== 'true');
+    if (firstUnclicked) {
+      firstUnclicked.classList.add('hint');
+    }
+  };
+
+  // Initialize hint on first koan
+  updateHint();
+
   const checkAllKoansClicked = () => {
     return [...koans].every(koan => koan.dataset.clicked === 'true');
   };
@@ -19,7 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   koans.forEach(koan => {
     koan.addEventListener('click', () => {
+      // Mark as clicked and add clicked class for styling
       koan.dataset.clicked = 'true';
+      koan.classList.add('clicked');
+
+      // Update hint to next unclicked koan
+      updateHint();
+
+      // Check if all clicked to reveal social icons
       revealSocialIcons();
 
       // Close all other explanations (including sub-tagline explanation)
@@ -31,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       subTaglineExplanation.classList.remove('show');
       subTaglineLink.classList.remove('open');
-
 
       // Toggle the current explanation
       const explanation = koan.querySelector('.explanation');
