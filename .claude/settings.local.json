@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nrefactor: separate social icons from blogs section\n\n- Move note.com and Blogger from social icons to new Blogs section\n- Add Blogs section styled like Projects \\(separator, hover effects\\)\n- Social icons now only show GitHub, X, LinkedIn\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}

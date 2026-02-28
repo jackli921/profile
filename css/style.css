@@ -440,6 +440,62 @@ body {
   margin: 0;
 }
 
+/* Blogs Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.blogs {
+  margin-top: var(--space-lg);
+  text-align: center;
+  padding-bottom: var(--space-lg);
+}
+
+.blog {
+  padding: var(--space-sm) 0;
+}
+
+.blog a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  font-size: 1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: var(--space-xs) 0;
+  position: relative;
+}
+
+.blog a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent-vermillion);
+  transition: width 0.3s ease;
+}
+
+.blog a:hover::after {
+  width: 100%;
+}
+
+.blog a:hover {
+  color: var(--accent-vermillion);
+}
+
+.blog h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.blog p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
 /* Social Reveal (message + icons)
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .social-reveal {
@@ -563,7 +619,8 @@ body {
     margin: var(--space-lg) 0;
   }
 
-  .projects {
+  .projects,
+  .blogs {
     margin-top: var(--space-md);
   }
 }
